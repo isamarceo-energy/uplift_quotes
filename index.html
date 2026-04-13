@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Uplift</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --cream:       #fdf6ec;
+      --warm-white:  #fffaf3;
+      --gold-light:  #e8c87a;
+      --gold-mid:    #c9a84c;
+      --gold-dark:   #a07830;
+      --text-dark:   #3b2f1e;
+      --text-mid:    #6b4f2e;
+      --text-light:  #9e7d50;
+      --shadow:      rgba(160, 120, 48, 0.15);
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(145deg, #fdf0d8 0%, #faf3e4 40%, #f5e8c8 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lato', sans-serif;
+      color: var(--text-dark);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Subtle background texture with layered orbs */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 20%, rgba(232, 200, 122, 0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 80% 80%, rgba(201, 168, 76, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(253, 240, 216, 0.4) 0%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Decorative corner flourishes */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-image:
+        radial-gradient(circle 1px at 15% 15%, var(--gold-light) 1px, transparent 1px),
+        radial-gradient(circle 1px at 85% 15%, var(--gold-light) 1px, transparent 1px),
+        radial-gradient(circle 1px at 15% 85%, var(--gold-light) 1px, transparent 1px),
+        radial-gradient(circle 1px at 85% 85%, var(--gold-light) 1px, transparent 1px);
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Header ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      padding: 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .app-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      opacity: 0.85;
+    }
+
+    .title-rule {
+      margin-top: 0.5rem;
+      width: 3rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
+    }
+
+    /* ── Main card ── */
+    main {
+      position: relative;
+      z-index: 5;
+      width: min(680px, 90vw);
+      padding: 0 1rem;
+      text-align: center;
+    }
+
+    .ornament {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--gold-light);
+      opacity: 0.7;
+      display: block;
+      margin-bottom: 1.2rem;
+      user-select: none;
+    }
+
+    .quote-wrapper {
+      position: relative;
+      min-height: 18rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .quote-card {
+      opacity: 1;
+      transition: opacity 0.6s ease;
+    }
+
+    .quote-card.fade-out {
+      opacity: 0;
+    }
+
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 300;
+      font-size: clamp(1.35rem, 3.5vw, 2rem);
+      line-height: 1.65;
+      color: var(--text-dark);
+      letter-spacing: 0.01em;
+    }
+
+    .quote-divider {
+      margin: 1.6rem auto;
+      width: 2.5rem;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-mid), transparent);
+    }
+
+    .quote-author {
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-light);
+    }
+
+    /* ── Button ── */
+    .btn-wrap {
+      margin-top: 3rem;
+    }
+
+    .btn-new {
+      background: none;
+      border: 1px solid var(--gold-mid);
+      color: var(--gold-dark);
+      font-family: 'Lato', sans-serif;
+      font-weight: 400;
+      font-size: 0.78rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      padding: 0.85rem 2.4rem;
+      cursor: pointer;
+      border-radius: 2px;
+      position: relative;
+      overflow: hidden;
+      transition: color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+    }
+
+    .btn-new::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-mid));
+      opacity: 0;
+      transition: opacity 0.35s ease;
+      z-index: 0;
+    }
+
+    .btn-new span {
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-new:hover {
+      color: var(--cream);
+      border-color: var(--gold-mid);
+      box-shadow: 0 4px 20px var(--shadow);
+    }
+
+    .btn-new:hover::before {
+      opacity: 1;
+    }
+
+    .btn-new:active {
+      transform: scale(0.97);
+    }
+
+    /* ── Counter ── */
+    .counter {
+      margin-top: 1.6rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      color: var(--text-light);
+      opacity: 0.6;
+    }
+
+    /* ── Footer ── */
+    footer {
+      position: fixed;
+      bottom: 1.2rem;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      color: var(--text-light);
+      opacity: 0.45;
+      z-index: 10;
+    }
+
+    /* ── Particles (subtle floating dots) ── */
+    .particles {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold-light);
+      opacity: 0;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0%   { transform: translateY(100vh) scale(0); opacity: 0; }
+      10%  { opacity: 0.35; }
+      90%  { opacity: 0.15; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+
+    /* ── Responsive tweaks ── */
+    @media (max-width: 480px) {
+      .quote-wrapper { min-height: 14rem; }
+      .btn-new { padding: 0.75rem 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="particles" id="particles"></div>
+
+  <header>
+    <div class="app-title">Daily Uplift</div>
+    <div class="title-rule"></div>
+  </header>
+
+  <main>
+    <span class="ornament" aria-hidden="true">&ldquo;</span>
+
+    <div class="quote-wrapper">
+      <div class="quote-card" id="quoteCard">
+        <p class="quote-text" id="quoteText"></p>
+        <div class="quote-divider"></div>
+        <p class="quote-author" id="quoteAuthor"></p>
+      </div>
+    </div>
+
+    <div class="btn-wrap">
+      <button class="btn-new" id="btnNew" onclick="nextQuote()">
+        <span>New Quote</span>
+      </button>
+    </div>
+
+    <p class="counter" id="counter"></p>
+  </main>
+
+  <footer>lift your spirit &middot; one thought at a time</footer>
+
+  <script>
+    const quotes = [
+      // Rumi
+      { text: "Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there.", author: "Rumi" },
+      { text: "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.", author: "Rumi" },
+      { text: "You were born with wings. Why prefer to crawl through life?", author: "Rumi" },
+      { text: "The wound is the place where the Light enters you.", author: "Rumi" },
+      { text: "Sell your cleverness and buy bewilderment.", author: "Rumi" },
+      { text: "What you seek is seeking you.", author: "Rumi" },
+
+      // Hafiz
+      { text: "Even after all this time, the sun never says to the earth, 'You owe me.' Look what happens with a love like that — it lights the whole sky.", author: "Hafiz" },
+      { text: "I wish I could show you, when you are lonely or in darkness, the astonishing light of your own being.", author: "Hafiz" },
+      { text: "Fear is the cheapest room in the house. I would like to see you living in better conditions.", author: "Hafiz" },
+      { text: "The heart is the thousand-stringed instrument that can only be tuned with love.", author: "Hafiz" },
+      { text: "Stay close to anything that makes you glad to be alive.", author: "Hafiz" },
+
+      // Abraham Hicks / Esther Hicks
+      { text: "The Universe is not punishing you or blessing you. The Universe is responding to the vibrational attitude that you are emitting.", author: "Abraham Hicks" },
+      { text: "You are joy, looking for a way to express. It's not just that your purpose is joy; it is that you are joy.", author: "Abraham Hicks" },
+      { text: "Make peace with where you are, and reach for the thought that feels better.", author: "Abraham Hicks" },
+      { text: "A belief is only a thought you continue to think. And a thought you continue to think can always be changed.", author: "Abraham Hicks" },
+      { text: "The only way to get to joy is through appreciation.", author: "Abraham Hicks" },
+
+      // Neville Goddard
+      { text: "Assume the feeling of the wish fulfilled and observe the route that your attention follows.", author: "Neville Goddard" },
+      { text: "You are already that which you want to be, and your refusal to believe this is the only reason you do not see it.", author: "Neville Goddard" },
+      { text: "Change your conception of yourself and you will automatically change the world in which you live.", author: "Neville Goddard" },
+      { text: "The secret of imagining is the greatest of all problems, to the solution of which every one should aspire.", author: "Neville Goddard" },
+      { text: "Do not try to change people; they are only messengers telling you who you are. Revalue yourself.", author: "Neville Goddard" },
+
+      // Lao Tzu
+      { text: "When you realize there is nothing lacking, the whole world belongs to you.", author: "Lao Tzu" },
+      { text: "Nature does not hurry, yet everything is accomplished.", author: "Lao Tzu" },
+
+      // Kahlil Gibran
+      { text: "Your joy is your sorrow unmasked. And the selfsame well from which your laughter rises was oftentimes filled with your tears.", author: "Kahlil Gibran" },
+      { text: "You give but little when you give of your possessions. It is when you give of yourself that you truly give.", author: "Kahlil Gibran" },
+
+      // Rilke
+      { text: "I live my life in widening circles that reach out across the world.", author: "Rainer Maria Rilke" },
+      { text: "Once the realization is accepted that even between the closest human beings infinite distances continue, a wonderful living side by side can grow.", author: "Rainer Maria Rilke" },
+
+      // Meister Eckhart
+      { text: "If the only prayer you ever say in your entire life is 'thank you,' that will be enough.", author: "Meister Eckhart" },
+    ];
+
+    let currentIndex = -1;
+
+    function getNextIndex() {
+      let idx;
+      do { idx = Math.floor(Math.random() * quotes.length); }
+      while (idx === currentIndex && quotes.length > 1);
+      return idx;
+    }
+
+    function showQuote(index) {
+      const card   = document.getElementById('quoteCard');
+      const text   = document.getElementById('quoteText');
+      const author = document.getElementById('quoteAuthor');
+      const counter = document.getElementById('counter');
+
+      card.classList.add('fade-out');
+
+      setTimeout(() => {
+        text.textContent   = `\u201C${quotes[index].text}\u201D`;
+        author.textContent = `\u2014\u2009${quotes[index].author}`;
+        counter.textContent = `${index + 1} of ${quotes.length}`;
+        card.classList.remove('fade-out');
+      }, 600);
+    }
+
+    function nextQuote() {
+      const btn = document.getElementById('btnNew');
+      btn.disabled = true;
+      currentIndex = getNextIndex();
+      showQuote(currentIndex);
+      setTimeout(() => { btn.disabled = false; }, 1200);
+    }
+
+    // ── Particles ──
+    function spawnParticles() {
+      const container = document.getElementById('particles');
+      const count = 18;
+      for (let i = 0; i < count; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        const size = Math.random() * 4 + 2;
+        p.style.cssText = [
+          `width:${size}px`,
+          `height:${size}px`,
+          `left:${Math.random() * 100}%`,
+          `animation-duration:${Math.random() * 18 + 14}s`,
+          `animation-delay:${Math.random() * 16}s`,
+        ].join(';');
+        container.appendChild(p);
+      }
+    }
+
+    // Kick off
+    spawnParticles();
+    nextQuote();
+  </script>
+</body>
+</html>
