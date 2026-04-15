@@ -299,49 +299,137 @@
 
   <script>
     const quotes = [
-      // Rumi
+      // ── Rumi ──
       { text: "Out beyond ideas of wrongdoing and rightdoing, there is a field. I'll meet you there.", author: "Rumi" },
       { text: "Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself.", author: "Rumi" },
       { text: "You were born with wings. Why prefer to crawl through life?", author: "Rumi" },
       { text: "The wound is the place where the Light enters you.", author: "Rumi" },
       { text: "Sell your cleverness and buy bewilderment.", author: "Rumi" },
       { text: "What you seek is seeking you.", author: "Rumi" },
+      { text: "Let yourself be silently drawn by the strange pull of what you really love. It will not lead you astray.", author: "Rumi" },
+      { text: "Wherever you are, and whatever you do, be in love.", author: "Rumi" },
+      { text: "When you do things from your soul, you feel a river moving in you, a joy.", author: "Rumi" },
+      { text: "Do not be satisfied with the stories that come before you. Unfold your own myth.", author: "Rumi" },
+      { text: "Raise your words, not your voice. It is rain that grows flowers, not thunder.", author: "Rumi" },
+      { text: "There is a voice that doesn't use words. Listen.", author: "Rumi" },
+      { text: "Silence is the language of God; all else is poor translation.", author: "Rumi" },
+      { text: "Be like the sun for grace and mercy. Be like the night to cover others' faults. Be like running water for generosity.", author: "Rumi" },
 
-      // Hafiz
+      // ── Hafiz ──
       { text: "Even after all this time, the sun never says to the earth, 'You owe me.' Look what happens with a love like that — it lights the whole sky.", author: "Hafiz" },
       { text: "I wish I could show you, when you are lonely or in darkness, the astonishing light of your own being.", author: "Hafiz" },
       { text: "Fear is the cheapest room in the house. I would like to see you living in better conditions.", author: "Hafiz" },
       { text: "The heart is the thousand-stringed instrument that can only be tuned with love.", author: "Hafiz" },
       { text: "Stay close to anything that makes you glad to be alive.", author: "Hafiz" },
+      { text: "Now is the time to know that all that you do is sacred.", author: "Hafiz" },
+      { text: "The small man builds cages for everyone he knows. While the sage keeps dropping keys all night long for the beautiful rowdy prisoners.", author: "Hafiz" },
+      { text: "An awake heart is like a sky that pours light.", author: "Hafiz" },
+      { text: "We have come into this exquisite world to experience ever and ever more deeply our divine courage, freedom, and light.", author: "Hafiz" },
+      { text: "Even this candle flame is a prayer — it gives itself entirely to the light.", author: "Hafiz" },
+      { text: "Love sometimes wants to do us a great favor: hold us upside down and shake all the nonsense out.", author: "Hafiz" },
+      { text: "The sun will stand as your best man and whistle when you have found the courage to marry forgiveness.", author: "Hafiz" },
 
-      // Abraham Hicks / Esther Hicks
+      // ── Abraham Hicks ──
       { text: "The Universe is not punishing you or blessing you. The Universe is responding to the vibrational attitude that you are emitting.", author: "Abraham Hicks" },
       { text: "You are joy, looking for a way to express. It's not just that your purpose is joy; it is that you are joy.", author: "Abraham Hicks" },
       { text: "Make peace with where you are, and reach for the thought that feels better.", author: "Abraham Hicks" },
       { text: "A belief is only a thought you continue to think. And a thought you continue to think can always be changed.", author: "Abraham Hicks" },
       { text: "The only way to get to joy is through appreciation.", author: "Abraham Hicks" },
+      { text: "You are the creator of your own reality.", author: "Abraham Hicks" },
+      { text: "Everything you want is downstream. Quit paddling against the current and go with the flow of who you really are.", author: "Abraham Hicks" },
+      { text: "Be easy about this. Be playful about it. Don't take it so seriously. If it is not fun, you are not doing it right.", author: "Abraham Hicks" },
+      { text: "You cannot have a happy ending to an unhappy journey.", author: "Abraham Hicks" },
+      { text: "When you feel enthusiasm to do something, it means you've lined up the Energy, and you are being inspired to take action.", author: "Abraham Hicks" },
+      { text: "The better you feel, the more in alignment you are. The worse you feel, the more out of alignment you are.", author: "Abraham Hicks" },
+      { text: "Reach for the thought that feels better, and let the Universe do the rest.", author: "Abraham Hicks" },
+      { text: "You are a vibrational being in a vibrational universe. Everything is responding to you.", author: "Abraham Hicks" },
 
-      // Neville Goddard
+      // ── Neville Goddard ──
       { text: "Assume the feeling of the wish fulfilled and observe the route that your attention follows.", author: "Neville Goddard" },
       { text: "You are already that which you want to be, and your refusal to believe this is the only reason you do not see it.", author: "Neville Goddard" },
       { text: "Change your conception of yourself and you will automatically change the world in which you live.", author: "Neville Goddard" },
       { text: "The secret of imagining is the greatest of all problems, to the solution of which every one should aspire.", author: "Neville Goddard" },
       { text: "Do not try to change people; they are only messengers telling you who you are. Revalue yourself.", author: "Neville Goddard" },
+      { text: "Your concept of yourself determines the world you live in.", author: "Neville Goddard" },
+      { text: "To pray is to assume the feeling of the wish fulfilled.", author: "Neville Goddard" },
+      { text: "Dare to believe in the reality of your assumption and watch the world play its part relative to its fulfilment.", author: "Neville Goddard" },
+      { text: "All transformation begins with an intense, burning desire to be transformed.", author: "Neville Goddard" },
+      { text: "Persist in your assumption and it will harden into fact.", author: "Neville Goddard" },
+      { text: "The human imagination is the divine body of the Lord Jesus Christ.", author: "Neville Goddard" },
+      { text: "Sleep is the golden chain that ties health and our bodies together — and it is also the door to the subconscious.", author: "Neville Goddard" },
+      { text: "Man's chief delusion is his conviction that there are causes other than his own state of consciousness.", author: "Neville Goddard" },
 
-      // Lao Tzu
+      // ── Lao Tzu ──
       { text: "When you realize there is nothing lacking, the whole world belongs to you.", author: "Lao Tzu" },
       { text: "Nature does not hurry, yet everything is accomplished.", author: "Lao Tzu" },
+      { text: "Knowing others is wisdom; knowing yourself is enlightenment.", author: "Lao Tzu" },
+      { text: "To the mind that is still, the whole universe surrenders.", author: "Lao Tzu" },
+      { text: "Life is a series of natural and spontaneous changes. Don't resist them.", author: "Lao Tzu" },
+      { text: "A journey of a thousand miles begins with a single step.", author: "Lao Tzu" },
+      { text: "Be content with what you have; rejoice in the way things are. When you realize there is nothing lacking, the whole world belongs to you.", author: "Lao Tzu" },
 
-      // Kahlil Gibran
+      // ── Kahlil Gibran ──
       { text: "Your joy is your sorrow unmasked. And the selfsame well from which your laughter rises was oftentimes filled with your tears.", author: "Kahlil Gibran" },
       { text: "You give but little when you give of your possessions. It is when you give of yourself that you truly give.", author: "Kahlil Gibran" },
+      { text: "And think not you can direct the course of love, for love, if it finds you worthy, directs your course.", author: "Kahlil Gibran" },
+      { text: "The deeper that sorrow carves into your being, the more joy you can contain.", author: "Kahlil Gibran" },
+      { text: "Let there be spaces in your togetherness, and let the winds of the heavens dance between you.", author: "Kahlil Gibran" },
+      { text: "Your children are not your children. They are the sons and daughters of Life's longing for itself.", author: "Kahlil Gibran" },
+      { text: "Out of suffering have emerged the strongest souls; the most massive characters are seared with scars.", author: "Kahlil Gibran" },
 
-      // Rilke
+      // ── Rainer Maria Rilke ──
       { text: "I live my life in widening circles that reach out across the world.", author: "Rainer Maria Rilke" },
       { text: "Once the realization is accepted that even between the closest human beings infinite distances continue, a wonderful living side by side can grow.", author: "Rainer Maria Rilke" },
+      { text: "Be patient toward all that is unsolved in your heart and try to love the questions themselves.", author: "Rainer Maria Rilke" },
+      { text: "The only journey is the one within.", author: "Rainer Maria Rilke" },
+      { text: "Perhaps everything that frightens us is, in its deepest essence, something helpless that wants our love.", author: "Rainer Maria Rilke" },
+      { text: "Perhaps all the dragons in our lives are princesses who are only waiting to see us act, just once, with beauty and courage.", author: "Rainer Maria Rilke" },
+      { text: "We must assume our existence as broadly as we in any way can; everything, even the unheard of, must be possible in it.", author: "Rainer Maria Rilke" },
 
-      // Meister Eckhart
+      // ── Meister Eckhart ──
       { text: "If the only prayer you ever say in your entire life is 'thank you,' that will be enough.", author: "Meister Eckhart" },
+      { text: "The eye through which I see God is the same eye through which God sees me; my eye and God's eye are one eye, one seeing, one knowing, one love.", author: "Meister Eckhart" },
+      { text: "To be full of things is to be empty of God. To be empty of things is to be full of God.", author: "Meister Eckhart" },
+      { text: "What we plant in the soil of contemplation, we shall reap in the harvest of action.", author: "Meister Eckhart" },
+      { text: "The outward work will never be puny if the inward work is great.", author: "Meister Eckhart" },
+      { text: "A human being has so many skins inside, covering the depths of the heart.", author: "Meister Eckhart" },
+
+      // ── Alan Watts ──
+      { text: "You are under no obligation to be the same person you were five minutes ago.", author: "Alan Watts" },
+      { text: "The meaning of life is just to be alive. It is so plain and so obvious and so simple. And yet, everybody rushes around in a great panic as if it were necessary to achieve something beyond it.", author: "Alan Watts" },
+      { text: "No valid plans for the future can be made by those who have no capacity for living now.", author: "Alan Watts" },
+      { text: "Trying to define yourself is like trying to bite your own teeth.", author: "Alan Watts" },
+      { text: "This is the real secret of life — to be completely engaged with what you are doing in the here and now.", author: "Alan Watts" },
+      { text: "You don't have a soul. You are a Soul. You have a body.", author: "Alan Watts" },
+      { text: "We cannot be more sensitive to pleasure without being more sensitive to pain.", author: "Alan Watts" },
+
+      // ── Additional — Rumi ──
+      { text: "Run from what's comfortable. Forget safety. Live where you fear to live. Destroy your reputation. Be notorious.", author: "Rumi" },
+      { text: "Gratitude is the wine for the soul. Go on, get drunk!", author: "Rumi" },
+
+      // ── Additional — Hafiz ──
+      { text: "Even after all this time the sun never says to the earth, 'You owe me.' That is the generosity of love.", author: "Hafiz" },
+      { text: "God wants to see more love and playfulness in your eyes, for that is your greatest witness to him.", author: "Hafiz" },
+
+      // ── Additional — Abraham Hicks ──
+      { text: "The more you praise and celebrate your life, the more there is in life to celebrate.", author: "Abraham Hicks" },
+      { text: "Every thought you think is creating your future. You are always in the process of becoming.", author: "Abraham Hicks" },
+      { text: "There is nothing you cannot be, do, or have.", author: "Abraham Hicks" },
+
+      // ── Additional — Neville Goddard ──
+      { text: "Your imagination is the very gateway of your future. Use it wisely and lovingly.", author: "Neville Goddard" },
+      { text: "You must be the being you want to have in your world.", author: "Neville Goddard" },
+
+      // ── Additional — Kahlil Gibran ──
+      { text: "Trust in dreams, for in them is hidden the gate to eternity.", author: "Kahlil Gibran" },
+      { text: "Beauty is not in the face; beauty is a light in the heart.", author: "Kahlil Gibran" },
+
+      // ── Additional — Meister Eckhart ──
+      { text: "God is at home. It is we who have gone for a walk.", author: "Meister Eckhart" },
+
+      // ── Additional — Lao Tzu ──
+      { text: "At the centre of your being you have the answer; you know who you are and you know what you want.", author: "Lao Tzu" },
+
     ];
 
     let currentIndex = -1;
